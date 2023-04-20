@@ -1,4 +1,4 @@
-ChatGPT3 Risk Analyzer
+ChatGPT3 Market Risk Analyzer
 
 This project involves downloading, transforming, and filtering 9 datasets from the FRED API using Python, and analyzing their normal distribution with the Pandas library. An algorithm categorizes each data point based on historical normal distribution, and a ChatGPT3 model is fine-tuned using 40 years of CPI, PCE, and Inflation data.
 
