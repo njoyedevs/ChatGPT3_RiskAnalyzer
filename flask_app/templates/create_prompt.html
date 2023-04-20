@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT3 Analyzer</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: none;
+        }
+        body {
+            background-color: black;
+        }
+        .container  {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h1, h2 {
+            color:purple;
+        }
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            margin: 2rem 0rem 0rem 15rem;
+        }
+        .middle {
+            margin: 5rem 0rem 0rem 0rem;
+        }
+        .bottom {
+            display: flex;
+            justify-content: left;
+            flex-direction: column;
+        }
+        .text_inputs {
+            display: flex;
+            flex-direction: row;
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        #label {
+            width: 20rem;
+            color: #ffffff;
+        }
+        #input {
+            width: 6rem;
+        }
+        .submit_button {
+            margin: 1rem 0rem 0rem 8rem;
+            width:10rem;
+            height: 2rem;
+            background-color:purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+        }
+        #button_1 {
+            width: 4rem;
+            height: 2rem;
+            background:  purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 0rem 0rem 6rem;
+            padding: .3rem .6rem .3rem .6rem;
+            text-decoration: none;
+        }
+        #button_2 {
+            width: 4rem;
+            height: 2rem;
+            background:rgb(13, 167, 8);
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 2rem 1rem 0rem;
+            padding: .5rem 1rem .5rem 1rem;
+            text-decoration: none;
+            text-align: center;
+            text-justify: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="/please/wait" method="POST">
+        <div class="container">
+            <div class="top">
+                <h1>ChatGPT3 Market Risk Analyzer</h1>\
+                <div class="link">
+                    <a id='button_1' href="/clear_session" class="link">Logout</a>
+                </div>
+            </div>
+            <div class="message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li id='list' class='{{ category }}'>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="middle">
+                <h2>Enter Market Data</h2>
+            </div>
+            <!-- input.date -->
+            <div class="bottom">
+                <div class="text_inputs">
+                    <label id='label' class='labels' for="date">Fed Release Date:</label>
+                    <input id="input" type="date" id="date" name="date" value="" min="2020-01-01" max="2030-01-01">
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="spcpi">Sticky Price CPI:</label>
+                    <input id="input" name="spcpi" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="spcpi_m_s">Sticky Price CPI Less Shelter:</label>
+                    <input id="input" name="spcpi_m_s" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="spcpi_m_fe">Sticky Price CPI Less Food & Energy:</label>
+                    <input id="input" name="spcpi_m_fe" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="spcpi_m_fes">Sticky Price CPI Less Food & Energy & Shelter:</label>
+                    <input id="input" name="spcpi_m_fes" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="trim_mean_pce">Trimmed Mean PCE Inflation Rate:</label>
+                    <input id="input" name="trim_mean_pce" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="sixteenP_trim_mean_cpi">16% Trimmed Mean CPI:</label>
+                    <input id="input" name="sixteenP_trim_mean_cpi" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="median_cpi">Median CPI:</label>
+                    <input id="input" name="median_cpi" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="fpcpi">Flexible Price CPI:</label>
+                    <input id="input" name="fpcpi" type="text"/>
+                </div>
+                <div class="text_inputs">
+                    <label id='label' class="labels" for="fpcpi_m_fe">Flexible Price CPI Less Food & Energy:</label>
+                    <input id="input" name="fpcpi_m_fe" type="text"/>
+                </div>
+                <!-- form_submit -->
+                <!-- <input type="hidden" value="{{ session['user_id'] }}" name="user_id"> -->
+                <input class="submit_button" type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+        body {
+            display: flex;
+            align-items: left;
+            flex-direction: column;
+        }
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            flex-direction: row;
+            margin: 2rem 0rem 1rem 6rem;
+        }
+        h1 {
+            margin: 0rem 0rem 0rem 0rem;
+        }
+        a {
+            margin: 0rem 0rem 0rem 2rem;
+        }
+        .bottom {
+            display: flex;
+            align-items: left;
+            flex-direction: column;
+        }
+        form {
+            display: flex;
+            align-items: left;
+            flex-direction: column;
+            margin: 0rem 43rem 0rem 6rem;
+        }
+        .button {
+            /* margin: .5rem 10rem 0rem 0rem; */
+            /* padding: 0rem .3rem 0rem .3rem; */
+            margin: .5rem 8rem 0rem 0rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h1>Add a Friend</h1>
+        <a href="/users">Home</a>
+    </div>
+    <div class="bottom">
+        <form action="/users/create" method="POST">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name">
+            <label for="email" >Email:</label>
+            <input type="text" name="email">
+            <button class="button" type="submit" >Create</button>
+        </form> 
+    </div>
+</body>
+</html>

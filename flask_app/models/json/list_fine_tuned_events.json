@@ -1,0 +1,32 @@
+// This is example 1 where i didn't include the correct number of classes in the hyperparameters
+
+{
+    "data": [
+        {
+            "created_at": 1677530536,
+            "level": "info",
+            "message": "Created fine-tune: ft-6wUWHiD63i8p6vQ1mGETewJk",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677530887,
+            "level": "error",
+            "message": "Fine-tune failed. Errors:\nThe number of classes in file-vRNImhMAUW7JBPR4t21ZQtMD does not match the number of classes specified in the hyperparameters.",
+            "object": "fine-tune-event"
+        }
+    ],
+    "object": "list"
+}
+// This is example 2
+
+{
+    "data": [
+        {
+            "created_at": 1677531471,
+            "level": "info",
+            "message": "Created fine-tune: ft-hbOh0WzZdjA3NeEwhjktUtlX",
+            "object": "fine-tune-event"
+        }
+    ],
+    "object": "list"
+}

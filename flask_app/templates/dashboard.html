@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT3 Analyzer</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: none;
+        }
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+        .container  {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: purple;
+            font-size: 3rem;
+        }
+        h2 {
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            margin: 2rem 0rem 0rem 15rem;
+        }
+        .middle_1 {
+            margin: 0rem 0rem 0rem 0rem;
+        }
+        .middle_2 {
+            margin: 0rem 0rem 0rem 2rem;
+            color: white;
+            font-size: 1.3rem;
+        }
+        .accuracy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            /* margin: 1rem 25.5rem 0rem 2rem; */
+            margin: 1rem 0rem 0rem 2rem;
+            color: white;
+            font-size: 1.3rem;
+        }
+        .confirmation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0rem 0rem 0rem;
+            color: purple;
+            font-size: 1.3rem;
+        }
+        #retrain_button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 2rem;
+            background:purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 0rem 0rem 2rem;
+            text-decoration: none;
+            font-size: 1.3rem;
+        }
+        .bottom {
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            flex-direction: column;
+            margin: 2rem 0rem 0rem 10rem;
+        }
+        .text_inputs {
+            display: flex;
+            flex-direction: row;
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        #label {
+            width: 20rem;
+            color: #ffffff;
+        }
+        #input {
+            width: 5rem;
+        }
+        .submit_button {
+            margin: 1rem 0rem 0rem 8rem;
+            width:10rem;
+            height: 2rem;
+            background-color: purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+        }
+        #button_1 {
+            width: 4rem;
+            height: 2rem;
+            background: purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 0rem 0rem 6rem;
+            padding: .3rem .6rem .3rem .6rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        #button_2 {
+            width: 4rem;
+            height: 2rem;
+            background:rgb(13, 167, 8);
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 2rem 1rem 0rem;
+            padding: .5rem 1rem .5rem 1rem;
+            text-decoration: none;
+            text-align: center;
+            text-justify: center;
+        }
+        .sources {
+            margin: 2rem 0rem 0rem 0rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .info_1  {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin: 0rem 0rem 2rem 0rem;
+        }
+        .info_2  {
+            color: #ffffff;
+            font-size: 1.0rem;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        .notes {
+            margin: 2rem 0rem 2rem 0rem;
+        }
+        .name_list {
+            margin: 0rem 0rem 0rem 0rem;
+            display: flex;
+            /* align-items: center; */
+            /* justify-content: center; */
+            flex-direction: row;
+        }
+        .list_item {
+            color: white;
+            margin: .5rem 2rem .8rem 0rem;
+            text-decoration: none;
+            font-size: 1.3rem;
+        }
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 2rem;
+            background:purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            margin: .5rem 0rem 0rem 0rem;
+            padding: .2rem 1rem .2rem 1rem;
+            text-decoration: none;
+            font-size: 1.3rem;
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            margin: .2rem 0rem 0rem 0rem;
+        }
+    </style>
+</head>
+<body>
+    <form action="/please/wait" method="POST">
+        <div class="container">
+            <div class="top">
+                <h1>ChatGPT3 Market Risk Analyzer</h1>\
+                <div >
+                    <a id='button_1' href="/clear_session">Logout</a>
+                </div>
+            </div>
+            <div class="message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li id='list' class='{{ category }}'>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <!-- add meter -->
+            <div class="middle_1">
+                <div>{{ gauge_fig|safe }}</div>
+            </div>
+            <!-- add risk statement data -->
+            <div class="middle_2">
+                <p>ChatGPT3 Prompt:<br><br>"On {{ user.chatgpt_data.results.date.strftime("%m/%d/%Y") }}, Sticky Price CPI was {{ user.chatgpt_data.results.user_data.spcpi }}, Sticky Price CPI Less Shelter was {{ user.chatgpt_data.results.user_data.spcpi_m_s }},<br>Sticky Price CPI Less Food Energy was {{ user.chatgpt_data.results.user_data.spcpi_m_fe }}, Sticky Price CPI Less Food Energy Shelter was {{ user.chatgpt_data.results.user_data.spcpi_m_fes }},<br>Trimmed Mean PCE Inflation Rate was {{ user.chatgpt_data.results.user_data.trim_mean_pce }}, 16% Trimmed Mean CPI was {{ user.chatgpt_data.results.user_data.sixteenP_trim_mean_cpi }},<br>Median CPI was {{ user.chatgpt_data.results.user_data.median_cpi }}, Flexible Price CPI was {{ user.chatgpt_data.results.user_data.fpcpi }}, Flexible Price CPI Less Food Energy was {{ user.chatgpt_data.results.user_data.fpcpi_m_fe }}"</p>
+            </div>
+            <div class="accuracy">
+                <p>ChatGPT3 Accuracy*: {{ (user.chatgpt_data.accuracy * 100)|round(1) }}%</p>
+                <a id='retrain_button' href="/retrain" class="link">Retrain</a>
+            </div>
+            <div class="confirmation">
+                {{ session['confirmation']|safe }}
+            </div>
+            <!-- add charts data -->
+            <div class="bottom">
+                <div>{{ chart_div|safe }}</div>
+            </div>
+            <div class="sources">
+                <p class="info_1">All data is publically available via FRED API.</p>
+                <div class="name_list">
+                    <div class="left">
+                        <p class="list_item">Sticky Price CPI</p>
+                        <p class="list_item">Sticky Price CPI Less Shelter</p>
+                        <p class="list_item">Sticky Price CPI Less Food Energy</p>
+                        <p class="list_item">Sticky Price CPI Less Food Energy Shelter</p>
+                        <p class="list_item">Trimmed Mean PCE Inflation Rate</p>
+                        <p class="list_item">16% Trimmed Mean CPI</p>
+                        <p class="list_item">Median CPI</p>
+                        <p class="list_item">Flexible Price CPI </p>
+                        <p class="list_item">Flexible Price CPI Less Food Energy </p>
+                    </div>
+                    <div class="right">
+                        <a href="https://fred.stlouisfed.org/series/STICKCPIM159SFRBATL" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/STICKCPIXSHLTRM159SFRBATL" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/CORESTICKM159SFRBATL" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/CRESTKCPIXSLTRM159SFRBATL" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/PCETRIM12M159SFRBDAL" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/TRMMEANCPIM159SFRBCLE" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/MEDCPIM159SFRBCLE" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/FLEXCPIM159SFRBATL" class="link">Data</a>
+                        <a href="https://fred.stlouisfed.org/series/COREFLEXCPIM159SFRBATL" class="link">Data</a>
+                    </div>
+                </div>
+                <div class="notes">
+                    <p class="info_2">*Feel free to train ChatGPT3 again if accuracy is below 91%.</p>
+                    <p class="info_2">*Based on the Best Practices, 91% may be a peak for the Curie model.</p>
+                    <p class="info_2">*See "How to pick the right model" section half way down for more information - <a href="https://docs.google.com/document/d/1rqj7dkuvl7Byd5KQPUJRxc19BJt8wo0yHNwK84KfU3Q/edit#">Best Practices</a></p>
+                    <p class="info_2">**Monthly, Seasonally Adjusted, Year-Over-Year Series.</p>
+                    <p class="info_2">For more on Fine Tuning ChatGPT3, check out <a href="https://platform.openai.com/docs/guides/fine-tuning">OpenAI-ChatGPT3</a>.</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{
+    "created_at": 1677568292,
+    "events": [
+        {
+            "created_at": 1677568292,
+            "level": "info",
+            "message": "Created fine-tune: ft-bx7BVM2fNSBfMu7PXYDRSarN",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677568792,
+            "level": "info",
+            "message": "Fine-tune costs $4.99",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677568793,
+            "level": "info",
+            "message": "Fine-tune enqueued. Queue number: 0",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677568796,
+            "level": "info",
+            "message": "Fine-tune started",
+            "object": "fine-tune-event"
+        }
+    ],
+    "fine_tuned_model": null,
+    "hyperparams": {
+        "batch_size": 1,
+        "learning_rate_multiplier": 0.1,
+        "n_epochs": 16,
+        "prompt_loss_weight": 0.01
+    },
+    "id": "ft-bx7BVM2fNSBfMu7PXYDRSarN",
+    "model": "curie",
+    "object": "fine-tune",
+    "organization_id": "org-aAJNJIDCbG3gojns7msJhtSj",
+    "result_files": [],
+    "status": "running",
+    "training_files": [
+        {
+            "bytes": 390342,
+            "created_at": 1677568201,
+            "filename": "file",
+            "id": "file-uswEhysPPth2Pk8eBstcgjef",
+            "object": "file",
+            "purpose": "fine-tune",
+            "status": "processed",
+            "status_details": null
+        }
+    ],
+    "updated_at": 1677568796,
+    "validation_files": []
+}
+{
+    "data": [
+        {
+            "created_at": 1677568292,
+            "level": "info",
+            "message": "Created fine-tune: ft-bx7BVM2fNSBfMu7PXYDRSarN",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677568792,
+            "level": "info",
+            "message": "Fine-tune costs $4.99",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677568793,
+            "level": "info",
+            "message": "Fine-tune enqueued. Queue number: 0",
+            "object": "fine-tune-event"
+        },
+        {
+            "created_at": 1677568796,
+            "level": "info",
+            "message": "Fine-tune started",
+            "object": "fine-tune-event"
+        }
+    ],
+    "object": "list"
+}

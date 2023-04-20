@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/7358212b7e.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: none;
+        }
+        .container {
+            margin: 5rem;
+            width: 50rem;
+            height: 50rem;
+            overflow: scroll;
+        }
+        #date {
+            
+        }
+        table {
+            
+        }
+        .header {
+            
+        }
+        .col_header {
+            
+        }
+        .body {
+            
+        }
+        .row {
+            
+        }
+        .data_point {
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead class="header">
+                <tr class="col">
+                <th class="col_header" id="date">Date</th>
+                <th class="col_header">Sticky_Price_CPI</th>
+                <th class="col_header">Sticky_Price_CPI_Less_Shelter</th>
+                <th class="col_header">Sticky_Price_CPI_Less_Food_Energy</th>
+                <th class="col_header">Sticky_Price_CPI_Less_Food_Energy_Shelter</th>
+                <th class="col_header">Trimmed_Mean_PCE_Inflation_Rate</th>
+                <th class="col_header">16_Percent_Trimmed_Mean_CPI</th>
+                <th class="col_header">Median_CPI</th>
+                <th class="col_header">Flexible_Price_CPI</th>
+                <th class="col_header">Flexible_Price_CPI_Less_Food_Energy</th>
+                </tr>
+            </thead>
+            <tbody class="body">
+                {% for row in econ_data %}
+                <tr class="row">
+                    <td class='data_point' id="date">{{ row.date }}</td>
+                    <td class='data_point'>{{ row.spcpi }}</td>
+                    <td class='data_point'>{{ row.spcpi_m_s }}</td>
+                    <td class='data_point'>{{ row.spcpi_m_fe }}</td>
+                    <td class='data_point'>{{ row.spcpi_m_fes }}</td>
+                    <td class='data_point'>{{ row.trim_mean_pce }}</td>
+                    <td class='data_point'>{{ row.sixteenP_trim_mean_cpi }}</td>
+                    <td class='data_point'>{{ row.median_cpi }}</td>
+                    <td class='data_point'>{{ row.fpcpi }}</td>
+                    <td class='data_point'>{{ row.fpcpi_m_fe }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

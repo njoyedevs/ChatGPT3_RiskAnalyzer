@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 3rem 0rem 0rem 20rem;
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+
+        .top > a {
+            margin: 0rem 0rem 0rem 15rem;
+        }
+
+        .middle {
+            border: .2rem solid black;
+            margin: 0rem 20rem 0rem 0rem;
+        }
+
+        .middle > p {
+            margin: 1rem 1rem 1rem 1rem;
+        }
+
+        .bottom {
+            margin: 2rem 0rem 0rem 0rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .bottom > a {
+            margin: 0rem 1rem 0rem 1rem;
+        }
+        </style>
+</head>
+<body>
+    <div class="top">
+        <h1>Show {{ users.first_name }}</h1>
+        <a href="/users">Home</a>
+    </div>
+    <div class="middle">
+        <p>Full Name: {{users.first_name}} {{users.last_name}}</p>
+        <p>Email: {{users.email}}</p>
+        <p>Created On: {{users.created_at}}</p>
+        <p>Last Updated On: {{users.updated_at}}</p>
+    </div>
+    <div class="bottom">
+        <a href='/users/{{ users.id }}/edit'>Edit</a>
+        <p> | </p>
+        <a href="/users/{{ users.id }}/destroy/">Delete</a>
+    </div>
+</body>
+</html>

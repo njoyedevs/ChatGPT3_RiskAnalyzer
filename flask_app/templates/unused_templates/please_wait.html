@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: none;
+        }
+        body {
+            background-color: black;
+        }
+        .box  {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #wait-screen {
+            display: none
+        }
+        #spinner {
+            width: 10rem;
+            height: 10rem;
+        }
+        p {
+            color: #6324c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="wait-screen">
+            <img id='spinner' src="/Final_Project/flask_app/static/spinner.gif" alt="Spinner">
+            <p>Please wait while we perform the calculations...</p>
+        </div>
+    </div>
+</body>
+</html>

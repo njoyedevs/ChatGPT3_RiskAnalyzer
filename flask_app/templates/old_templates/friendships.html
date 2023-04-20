@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ one_user.first_name }}'s Friendships</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+        body {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            
+        }
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: .1rem solid rgb(86, 83, 83);
+            padding: 0rem 0rem .3rem 0rem;
+        }
+        .heading > h1 {
+            margin: 1rem 0rem 0rem 2rem;
+        }
+        .heading > h2 {
+            margin: 1rem 0rem 0rem 35rem;
+        }
+        .heading > a {
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        .logout_button {
+            margin: 0rem 0rem 0rem 0rem;
+            width: 4rem;
+            height: 2rem;
+            background:rgb(52, 123, 229);
+            color: #f7faf9;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .top_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            margin: 0rem 0rem 1rem 0rem;
+            padding: 1rem 2rem 1rem 2rem;
+            color: white;
+        }
+        .bottom_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            margin: 0rem 0rem 0rem 0rem;
+            padding: 1rem 1.4rem 1rem 1.4rem;
+            color: white;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .left_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 2rem 5rem 0rem 0rem;
+            padding: 1rem 3rem 1rem 3rem;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            width: 20rem;
+            color: white;
+            
+        }
+        .topic {
+            text-align: center;
+            border-bottom: .11rem solid rgb(234, 206, 45);
+            color: white;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        .header_line {
+            margin: 0rem 0rem 1rem 0rem;
+            color: rgb(234, 206, 45);
+        }
+        .each_form_1 {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(52, 123, 229);
+            color: white;
+            padding: 1rem;
+        }
+        .message_line {
+            border-bottom: .2rem solid rgb(0, 67, 168);
+            margin: 1rem 0rem 0rem 0rem ;
+        }
+        .del_button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: red;
+            color: white;
+            margin: .2rem 15rem 0rem 0rem;
+            width: 4rem;
+            height: 2rem;
+            border-radius: 5px;
+            border: none;
+        }
+        .right_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 1rem 0rem 0rem 3rem;
+            padding: 1rem 1rem 1rem 1rem;
+            /* background-color: rgb(86, 83, 83); */
+            /* border-radius: 5px; */
+        }
+        .each_form_2 {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        .labels {
+            color: white;
+        }
+        .text_boxes {
+            width: 20rem;
+            height: 5rem;
+        }
+        .message_button {
+            margin: .2rem 15rem 0rem 0rem;
+            width: 4rem;
+            height: 2rem;
+            background-color: rgb(234, 206, 45);
+            border-radius: 5px;
+            border: none;
+        }
+        .error_message {
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        #list {
+            list-style-type: none;
+            color: red;
+            font-size: 1rem;
+        }
+        table.GeneratedTable {
+            /* width: 100%; */
+            /* background-color: #ffffff; */
+            border-collapse: collapse;
+            border-width: .1rem;
+            border-color: #86d5f2;
+            border-style: solid;
+            color: #000000;;
+            margin: 1rem 2rem 0rem 2rem;
+        }
+        table.GeneratedTable td, table.GeneratedTable th {
+            border-width: .1rem;
+            border-color: #86d5f2 ;
+            border-style: solid;
+            background-color: #9dece9;
+            width: 14rem;
+            height: 2rem;
+            text-align: left;
+            padding: 0rem 1rem 0rem 1rem;
+        }
+        table.GeneratedTable thead {
+            background-color: #86d5f2;
+            /* border-color: #02ffff;
+            border-radius: 10px; */
+            width: 14rem;
+            height: 2rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="left_box">
+        <h1 class="heading">Friendships</h1>
+        <table>
+            <table class="GeneratedTable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Delete Friend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% for friend in friendship %}
+                    <form class="table_row"action="/delete/friendship" method="POST"></form>
+                        <tr>
+                            <td>{{ friend.first_name }} </td>
+                            <td>{{ friend.last_name }}</td>
+                            <input type="hidden" value="{{ friend.id }}" name="friend_id">
+                            <td><input class="message_button" type="submit" value="Delete"></td>
+                        </tr>
+                    </form>
+                    {% endfor %} -->
+                </tbody>
+            </table>
+        </table>
+    </div>
+    <div class="right_box">
+        <div class="top_box">
+            <h1 class="heading">Create Friendship</h1>
+            <div class="container">
+                <div class="message">
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                </div>
+                <form class="each_form_2"action="/create/friendship" method="POST">
+                    <div class="friend_dropdown">
+                        <label class="drop_label" for="friend_id">Friends:</label>
+                        <select class="drop_select"  name="friend_id" id="friends">
+                            {% for user in all_users %}
+                                {% if user.id != session.user_id %}
+                                    <option value="{{user.id}}">{{ user.first_name }} {{ user.last_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input type="hidden" value="{{ session['user_id']}}" name="user_id">
+                    <input class="message_button" type="submit" value="Create">
+                </form> 
+            </div>
+        </div>
+        <div class="bottom_box">
+            <h1 class="heading">Message A Friend</h1>
+            <div class="error_message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li id='list' class='{{ category }}'>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <form class="each_form_2" action="/message" method="post">
+                <!-- Drop down to pick friend -->
+                <div class="friend_dropdown">
+                    <label class="drop_label" for="recipient_id">Friends:</label>
+                    <select class="drop_select"  name="recipient_id" id="friends">
+                        {% for user in all_users %}
+                            {% if user.id != session.user_id %}
+                                <option value="{{user.id}}">{{ user.first_name }} {{ user.last_name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <textarea class="text_boxes" name="message_box"></textarea>
+                <input class="message_button" type="submit" value="Message">
+            </form>
+        </div>
+    </div>
+</body>

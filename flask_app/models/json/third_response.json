@@ -1,0 +1,19 @@
+{
+    "choices": [
+        {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "text": " /n/n***###***/n/n 3.0, Flex"
+        }
+    ],
+    "created": 1677571457,
+    "id": "cmpl-6opG5Nt7IxUfk9cvSlYtEBkfGue8g",
+    "model": "curie:ft-personal:market-risk-analyzer-2023-02-28-07-44-37",
+    "object": "text_completion",
+    "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 109,
+        "total_tokens": 125
+    }
+}

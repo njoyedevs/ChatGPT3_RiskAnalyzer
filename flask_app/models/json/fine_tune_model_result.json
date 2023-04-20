@@ -1,0 +1,100 @@
+{
+    "created": 1649359874,
+    "id": "curie",
+    "object": "model",
+    "owned_by": "openai",
+    "parent": null,
+    "permission": [
+        {
+            "allow_create_engine": false,
+            "allow_fine_tuning": false,
+            "allow_logprobs": true,
+            "allow_sampling": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "created": 1675106503,
+            "group": null,
+            "id": "modelperm-oPaljeveTjEIDbhDjzFiyf4V",
+            "is_blocking": false,
+            "object": "model_permission",
+            "organization": "*"
+        }
+    ],
+    "root": "curie"
+}
+{
+    "data": [
+        {
+            "bytes": 13048,
+            "created_at": 1677528640,
+            "filename": "file",
+            "id": "file-vRNImhMAUW7JBPR4t21ZQtMD",
+            "object": "file",
+            "purpose": "fine-tune",
+            "status": "processed",
+            "status_details": null
+        },
+        {
+            "bytes": 72138,
+            "created_at": 1677528639,
+            "filename": "file",
+            "id": "file-CVWCPnvDwn6DQI9oYcPmHckH",
+            "object": "file",
+            "purpose": "fine-tune",
+            "status": "processed",
+            "status_details": null
+        }
+    ],
+    "object": "list"
+}
+{
+    "created_at": 1677530536,
+    "events": [
+        {
+            "created_at": 1677530536,
+            "level": "info",
+            "message": "Created fine-tune: ft-6wUWHiD63i8p6vQ1mGETewJk",
+            "object": "fine-tune-event"
+        }
+    ],
+    "fine_tuned_model": null,
+    "hyperparams": {
+        "batch_size": null,
+        "classification_n_classes": 8,
+        "compute_classification_metrics": true,
+        "learning_rate_multiplier": null,
+        "n_epochs": 16,
+        "prompt_loss_weight": 0.01
+    },
+    "id": "ft-6wUWHiD63i8p6vQ1mGETewJk",
+    "model": "curie",
+    "object": "fine-tune",
+    "organization_id": "org-aAJNJIDCbG3gojns7msJhtSj",
+    "result_files": [],
+    "status": "pending",
+    "training_files": [
+        {
+            "bytes": 13048,
+            "created_at": 1677528640,
+            "filename": "file",
+            "id": "file-vRNImhMAUW7JBPR4t21ZQtMD",
+            "object": "file",
+            "purpose": "fine-tune",
+            "status": "processed",
+            "status_details": null
+        }
+    ],
+    "updated_at": 1677530536,
+    "validation_files": [
+        {
+            "bytes": 72138,
+            "created_at": 1677528639,
+            "filename": "file",
+            "id": "file-CVWCPnvDwn6DQI9oYcPmHckH",
+            "object": "file",
+            "purpose": "fine-tune",
+            "status": "processed",
+            "status_details": null
+        }
+    ]
+}

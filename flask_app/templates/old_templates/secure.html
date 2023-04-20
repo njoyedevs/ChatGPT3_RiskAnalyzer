@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ one_user.first_name }}'s Dashboard</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+        body {
+            display: block;
+            
+        }
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: .1rem solid rgb(86, 83, 83);
+            padding: 0rem 0rem .3rem 0rem;
+        }
+        .heading > h1 {
+            margin: 1rem 0rem 0rem 2rem;
+        }
+        .heading > h2 {
+            margin: 1rem 0rem 0rem 35rem;
+        }
+        .heading > a {
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        .friends_button {
+            margin: 0rem 0rem 0rem 0rem;
+            padding: 0rem 1rem 0rem 1rem;
+            width: 4rem;
+            height: 2rem;
+            background:red;
+            color: #f7faf9;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .logout_button {
+            margin: 0rem 0rem 0rem 0rem;
+            width: 4rem;
+            height: 2rem;
+            background:rgb(52, 123, 229);
+            color: #f7faf9;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .bottom_box {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .left_box {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin: 1rem 5rem 0rem 0rem;
+            padding: 1rem 1rem 1rem 1rem;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            width: 20rem;
+        }
+        .topic {
+            text-align: center;
+            border-bottom: .11rem solid rgb(234, 206, 45);
+            color: white;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        .header_line {
+            margin: 0rem 0rem 1rem 0rem;
+            color: rgb(234, 206, 45);
+        }
+        .each_form_1 {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(52, 123, 229);
+            color: white;
+            padding: 1rem;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        .message_line {
+            border-bottom: .2rem solid rgb(0, 67, 168);
+            margin: 1rem 0rem 0rem 0rem ;
+        }
+        .del_button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: red;
+            color: white;
+            margin: .2rem 15rem 0rem 0rem;
+            width: 4rem;
+            height: 2rem;
+            border-radius: 5px;
+            border: none;
+
+        }
+        .right_box {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin: 1rem 0rem 0rem 3rem;
+            padding: 1rem 1rem 1rem 1rem;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+        }
+        .each_form_2 {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        .labels {
+            color: white;
+        }
+        .text_boxes {
+            width: 20rem;
+            height: 5rem;
+        }
+        .message_button {
+            margin: .2rem 15rem 0rem 0rem;
+            width: 4rem;
+            height: 2rem;
+            background-color: rgb(234, 206, 45);
+            border-radius: 5px;
+            border: none;
+        }
+        .error_message {
+            margin: 0rem 0rem 1rem 0rem;
+        }
+        #list {
+            list-style-type: none;
+            color: red;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h1>Coding Dojo Wall</h1>
+        <h2>Welcome, {{ one_user.first_name }}!</h2>
+        <a href="/friendships" class="friends_button">Friendships</a>
+        <a href="/clear_session" class="logout_button">Logout</a>
+    </div>
+    <div class="bottom_box">
+        <div class="left_box">
+            <h3 class="topic">{{ rec_messages|length }} Message(s) for you</h3>
+            {% for message in rec_messages %}
+            <form class="each_form_1" action="/delete/message" method="post">
+                <div class="left_message">
+                    <h3 class="'header_line">{{ message[1] }} sent {{ message[0].time_span(message[0].created_at) }}</h3>
+                    <p class="message_line">{{ message[0].message }}</p>
+                </div>
+                <input class="del_button" type="submit" value="Delete">
+                <input type="hidden" value="{{message.id}}" name="recipient_id">
+            </form>
+            {% endfor %}
+        </div>
+        <div class="right_box">
+            <h3 class="topic">Send Message(s)</h3>
+            <h3 class="header_line">You have sent {{ sen_messages|length }} messages so far!</h3>
+            <div class="error_message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li id='list' class='{{ category }}'>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            {% for user in all_users %}
+                {% if user.id != session.user_id %}
+                    <form class="each_form_2" action="/send" method="post">
+                        <label class="labels" for="message_box">Message {{ user.first_name }}:</label>
+                        <textarea class="text_boxes" name="message_box"></textarea>
+                        <input class="message_button" type="submit" value="Message">
+                        <input type="hidden" value="{{ user.id }}" name="recipient_id">
+                        <input type="hidden" value="{{ session.user_id }}" name="user_id">
+                    </form>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

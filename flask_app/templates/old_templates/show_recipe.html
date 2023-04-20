@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.name }}</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            color: white;
+            padding: 2rem;
+            margin: 3rem 0rem 0rem 0rem;
+        }
+        .top {
+            display: flex; 
+            align-items: center;
+            /* flex-direction: row; */
+        }
+        h1 {
+            color: rgb(52, 123, 229);
+        }
+        .top_left {
+            margin: 0rem 5rem 0rem 0rem;
+        }
+        .right {
+            margin: 0rem 0rem 0rem 0rem;
+            padding: 0rem 0rem 0rem 7rem;
+        }
+        .links {
+            margin: 0rem 1.5rem 0rem 0rem;
+            padding: .5rem 1rem .5rem 1rem;
+        }
+        .middle {
+            display: flex; 
+            align-items: center;
+            flex-direction: row; 
+            color:rgb(234, 206, 45);
+            margin: 1rem 0rem 1rem 0rem;
+        }
+        .bottom {
+            display: flex; 
+            flex-direction: column;
+            border: .1rem solid rgb(13, 167, 8);
+            background-color: rgb(100, 165, 97);;
+            padding: 1rem;
+        }
+        .rows {
+            display: flex; 
+            margin: 0rem 0rem 1rem 0rem;
+            font-size: 1.1rem;
+        }
+        .labels {
+            margin: 0rem 5rem 0rem 0rem;
+            width: 10rem;
+        }
+        .info {
+            margin: 0rem 0rem 0rem 0rem;
+            inline-size: 250px;
+            overflow-wrap: break-word;
+        }
+        #button_1 {
+            width: 4rem;
+            height: 2rem;
+            background:  rgb(52, 123, 229);
+            color: #f7faf9;
+            border-radius: 5px;
+            border: none;
+            /* margin: 0rem 2rem 1rem 0rem; */
+            text-decoration: none;
+            /* text-align: center;
+            text-justify: center; */
+        }
+        #button_2 {
+            width: 4rem;
+            height: 2rem;
+            background:rgb(13, 167, 8);
+            color: #f7faf9;
+            border-radius: 5px;
+            border: none;
+            /* margin: 0rem 2rem 1rem 0rem; */
+            text-decoration: none;
+            /* text-align: center;
+            text-justify: center; */
+        }
+    
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="top_left">
+                <h1 class="left">Welcome, {{ session['first_name'] }}</h1>
+            </div>
+            <div class="top_right">
+                <a class='links' id="button_2" href='/recipes'>recipes</a>
+                <a class='links' id="button_1" href="/clear_session">logout</a>
+            </div>
+        </div>
+        <div class="middle">
+            <h3 class="left">Recipe Name: {{ recipe.name }}</h3>
+            <h3 class="right">Posted by: {{ recipe.user.first_name }}</h3>
+        </div>
+        <div class="bottom">
+            <div class="rows">
+                <label class="labels" for="description">Description:</label>
+                <p class="info" name="description">{{ recipe.description }}</p>
+            </div>
+            <div class="rows">
+                <label class="labels" for="under">Under 30 Minutes:</label>
+                <p class="info" name="under">{{ recipe.under_30 }}</p>
+            </div>
+            <div class="rows">
+                <label class="labels" for="instructions">Instructions:</label>
+                <p class="info" name="instructions">{{ recipe.instructions }}</p>
+            </div>
+            <div class="rows">
+                <label class="labels" for="date_made">Date Made:</label>
+                <p class="info" name="date_made">{{ recipe.date_cooked.strftime("%m/%d/%Y")  }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+        h1 {
+            margin: 0rem 0rem 2rem 0rem;
+            color: rgb(52, 123, 229);
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            margin: 2rem 15rem 0rem 15rem;
+            /* padding: 2rem 1rem 2rem 1rem;  */
+            width: 50rem;
+            height: 43rem;
+        }
+        .left_box {
+            display: flex;
+            flex-direction: column;
+            margin: 0rem 2rem 0rem 0rem;
+        }
+        .text_inputs {
+            display: flex;
+            flex-direction: row;
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        .text_boxes {
+            width: 20rem;
+            height: 15rem;
+        }
+        .labels {
+            margin: 0rem 2rem 0rem 0rem;
+            color: white;
+        }
+        #name_label {
+            margin: 0rem 4.2rem 0rem 0rem;
+        }
+        .name_box {
+            width: 20rem;
+            height: 2rem;
+        }
+        .right_box {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            flex-direction: column;
+        }
+        .top_right {
+            margin: 0rem 0rem 2rem 0rem;
+        }
+        .middle_right {
+            display: flex;
+            flex-direction: column;
+            margin: 0rem 0rem 6rem 0rem;
+        }
+        #list {
+            list-style-type: none;
+        }
+        #start {
+            width: 8rem;
+        }
+        .bottom_right {
+            margin: 0rem 0rem 5rem 0rem;
+        }
+        .message {
+            margin: 0rem 2rem .3rem 0rem;
+            color: red;
+            background-color: rgb(234, 142, 157);
+        }
+        .submit_button {
+            margin: 17rem 0rem 0rem 7rem;
+            width: 4rem;
+            height: 2rem;
+            background-color: rgb(234, 206, 45);
+            border-radius: 5px;
+            border: none;
+        }
+        a {
+            margin: 0rem 2rem 0rem 0rem;
+            color: red;
+        }
+        #button_1 {
+            width: 4rem;
+            height: 2rem;
+            background:  rgb(52, 123, 229);
+            color: #f7faf9;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 0rem 1rem 0rem;
+            padding: .5rem 1rem .5rem 1rem;
+            text-decoration: none;
+            text-align: center;
+            text-justify: center;
+        }
+        #button_2 {
+            width: 4rem;
+            height: 2rem;
+            background:rgb(13, 167, 8);
+            color: #f7faf9;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 2rem 1rem 0rem;
+            padding: .5rem 1rem .5rem 1rem;
+            text-decoration: none;
+            text-align: center;
+            text-justify: center;
+        }
+        </style>
+</head>
+<body>
+    <form action="/recipes/update" method="POST">
+        <div class="container">
+            <div class="left_box">
+                <h1>Edit Recipe!</h1>
+                <!-- input.name -->
+                <div class="text_inputs">
+                    <label id='name_label' class="labels" for="name">Name:</label>
+                    <input class="name_box" name="name" type="text" value="{{ recipe.name }}"/>
+                </div>
+                <div class="text_inputs">
+                    <label class="labels" for="name">Description:</label>
+                    <textarea class="text_boxes" name="description">{{ recipe.description }}</textarea>
+                </div>
+                <div class="text_inputs">
+                    <label class="labels" for="name">Instructions:</label>
+                    <textarea class="text_boxes" name="instructions">{{ recipe.instructions }}</textarea>
+                </div>
+            </div>
+            <div class="right_box">
+                <div class="top_right">
+                    <a id='button_2' href="/recipes" class="link">recipes</a>
+                    <a id='button_1' href="/clear_session" class="link">logout</a>
+                </div>
+                <div class="message">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                <ul class="flashes">
+                                    {% for category, message in messages %}
+                                        <li id='list' class='{{ category }}'>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                <!-- input.date -->
+                <div class="middle_right">
+                    <label class='labels' for="start">Date Cooked/Made:</label>
+                <input type="date" id="start" name="date_cooked"
+                    value="{{ recipe.date_cooked.strftime('%Y-%m-%d') }}"
+                    min="2020-01-01" max="2030-01-01">
+                </div>
+                <!-- input.radio_button -->
+                <div class="bottom_right">
+                    <label class="labels" for="under_30">Under 30 minutes?</label>
+                    <div class="radio">
+                        <input type="radio"  name="under_30" value="Yes">
+                        <label class="labels" for="under_30">Yes</label>
+                        <input type="radio"  name="under_30" value="No" checked>
+                        <label class="labels" for="under_30">No</label>
+                    </div>
+                </div>
+                <!-- form_submit -->
+                <input type="hidden" value="{{ recipe.id }}" name="recipe_id">
+                <input class="submit_button" type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

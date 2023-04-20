@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT3 Analyzer</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: none;
+        }
+        body {
+            background-color: black;
+        }
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .container  {
+            display: flex;
+            align-items: top;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        h1, h2 {
+            color: purple;
+        }
+        .heading_1 {
+            padding: .3rem 0rem .3rem 0rem;
+        }
+        .heading_2 {
+            padding: .3rem 0rem .3rem 0rem;
+        }
+        .message {
+            margin: 0rem 0rem 0rem 0rem;
+            color: rgb(212, 0, 255);
+        }
+        #list {
+            list-style-type: none;
+            margin: 1rem 1rem 1rem 1rem;
+        }
+        .box_1 {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0rem 5rem 0rem 0rem;
+            padding: 1rem 1rem 1rem 1rem;
+            border-radius: 5px;
+        }
+        .box_2 {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0rem 0rem 0rem 3rem;
+            padding: 1rem 1rem 1rem 1rem;
+            border-radius: 5px;
+        }
+        .text_inputs {
+            display: flex;
+            flex-direction: row;
+            margin: 1rem 0rem 0rem 0rem;
+        }
+        .labels {
+            padding: .3rem 0rem .3rem 0rem;
+            color: white;
+            font-size: .75rem;
+        }
+        .text_boxes {
+            height: 1.5rem;
+            width: 15rem;
+        }
+        #button_1 {
+            margin: 1rem 0rem 0rem 0rem;
+            width: 5rem;
+            height: 2rem;
+            background-color: purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+        }
+        #button_2 {
+            margin: 1rem 0rem 0rem 0rem;
+            width:5rem;
+            height: 2rem;
+            background-color: purple;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h1>ChatGPT3 Market Risk Analyzer</h1>
+    </div>
+    <div class="container">
+        <div clase="reg_box">
+            <form class="box_1" action="/registration" method="post">
+                <h2 class="heading_1">Registration</h2>
+                <div class="message">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <ul class="flashes">
+                                {% for category, message in messages %}
+                                    <li id='list' class='{{ category }}'>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <label class="labels" for="first_name">First Name:</label>
+                <input class="text_boxes" name="first_name" type="text"/>
+                <label class="labels" for="last_name">Last Name:</label>
+                <input class="text_boxes" name="last_name" type="text"/>
+                <label class="labels" for="email">Email:</label>
+                <input class="text_boxes" name="email" type="text"/>
+                <label class="labels" for="password">Password:</label>
+                <input class="text_boxes" name="password" type="text"/>
+                <label class="labels" for="confirm">Confirm Password:</label>
+                <input class="text_boxes" name="confirm" type="text"/>
+                <div class="button_div">
+                    <input id="button_1" type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+        <div clase="login_box">
+            <form class="box_2" action="/login" method="post">
+                <h2 class="heading_2">Login</h2>
+                <div class="message">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <ul class="flashes">
+                                {% for category, message in messages %}
+                                    <li id='list' class='{{ category }}'>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <label class="labels" for="email">Email:</label>
+                <input class="text_boxes" name="email" type="text"/>
+                <label class="labels" for="password">Password:</label>
+                <input class="text_boxes" name="password" type="text"/>
+                <div class="button_div">
+                    <input id="button_2" type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

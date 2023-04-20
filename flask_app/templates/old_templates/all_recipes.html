@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Dashboard</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(86, 83, 83);
+            border-radius: 5px;
+            margin: 5rem 0rem 0rem 0rem;
+        }
+        .top {
+            display: flex; 
+            align-items: center;
+            margin: 2rem 0rem 0rem 0rem;
+        }
+        .top_left {
+            margin: 0rem 17rem 0rem 0rem;
+            color: rgb(13, 167, 8);
+        }
+        .top_right {
+            display: flex;
+            align-items: center;
+            margin: .0rem 0rem .0rem 0rem;
+        }
+        .middle {
+            color: rgb(234, 206, 45);
+            margin: 1rem 42rem 0rem 0rem;
+        }
+        .bottom_table {
+            margin: 0rem 0rem 2rem 0rem;
+        }
+        table.GeneratedTable {
+            /* width: 100%; */
+            /* background-color: #ffffff; */
+            border-collapse: collapse;
+            border-width: .1rem;
+            border-color: rgb(6, 92, 221) ;
+            border-style: solid;
+            color: #000000;;
+            margin: 1rem 2rem 0rem 2rem;
+        }
+        table.GeneratedTable td, table.GeneratedTable th {
+            border-width: .1rem;
+            border-color: rgb(6, 92, 221) ;
+            border-style: solid;
+            background-color: rgb(52, 123, 229);
+            /* width: 14rem; */
+            height: 2rem;
+            text-align: left;
+            padding: 0rem 1rem 0rem 1rem;
+            color: white;
+        }
+        table.GeneratedTable thead {
+            background-color: rgb(52, 123, 229);
+            /* border-color: #02ffff;
+            border-radius: 10px; */
+            /* width: 14rem; */
+            height: 2rem;
+            text-align: left;
+        }
+        .name_column {
+            width: 20rem;
+        }
+        .posted_by_column {
+            width: 10rem;
+        }
+        .links {
+            margin: 0rem 1.5rem 0rem 0rem;
+            padding: .3rem 1rem .3rem 1rem;
+        }
+        #button_1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 2rem;
+            background:  rgb(52, 123, 229);
+            color: #f7faf9;
+            border-radius: 5px;
+            border: none;
+            /* margin: 0rem 2rem 1rem 0rem; */
+            text-decoration: none;
+            /* text-align: center;
+            text-justify: center; */
+        }
+        #button_2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 6rem;
+            height: 2rem;
+            background:rgb(13, 167, 8);
+            color: #f7faf9;
+            border-radius: 5px;
+            border: none;
+            /* margin: 0rem 2rem 1rem 0rem; */
+            text-decoration: none;
+            /* text-align: center;
+            text-justify: center; */
+        }
+        #button_3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 2rem;
+            background: rgb(234, 206, 45);
+            color: rgb(52, 123, 229);
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 1rem 0rem 0rem;
+            text-decoration: none;
+            /* text-align: center;
+            text-justify: center; */
+        }
+        #button_4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 2rem;
+            background: rgb(234, 45, 45);
+            color:white;
+            border-radius: 5px;
+            border: none;
+            margin: 0rem 1.5rem 0rem 0rem;
+            text-decoration: none;
+            /* text-align: center;
+            text-justify: center; */
+        }
+        .row_buttons {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin: .3rem 0rem .3rem 0rem;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="top_left">
+                <h1 class="left">Recipe Dashboard</h1>
+            </div>
+            <div class="top_right">
+                <a class='links' id="button_4" href='/recipes'>recipes</a>
+                <a class='links' id="button_2" href='/recipes/new'>create recipe</a>
+                <a class='links' id="button_1" href="/clear_session">logout</a>
+            </div>
+        </div>
+        <div class="middle">
+            <h2>All posted recipies:</h2>
+        </div>
+        <div class="bottom_table">
+            <table class="GeneratedTable">
+                <thead>
+                    <tr>
+                        <th class="name_column">Name</th>
+                        <th class="under_column">Under</th>
+                        <th class="posted_by_column">Posted By:</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recipe in recipes %}
+                    <tr>
+                        <td class="name_column">{{ recipe.name }}</td>
+                        <td class="under_column">{{ recipe.under_30 }}</td>
+                        <td class="posted_by_column">{{ recipe.user.first_name }}</td>
+                        <td>
+                            <div class="row_buttons">
+                                <a href="/recipes/{{ recipe.id }}" id='button_3' class="view_recipie">view</a>
+                                {% if recipe.user_id == session['user_id'] %}
+                                <a href="/recipes/edit/{{ recipe.id }}" id='button_3' class="edit">edit</a>
+                                {% endif %}
+                                {% if recipe.user_id == session['user_id'] %}
+                                <a href="/recipes/delete/{{ recipe.id }}" id='button_3' class="edit">delete</a>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

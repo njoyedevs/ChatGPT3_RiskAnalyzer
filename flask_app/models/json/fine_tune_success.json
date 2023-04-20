@@ -1,0 +1,324 @@
+{
+    "created_at": 1677568292,
+    "events": [
+      {
+        "created_at": 1677568292,
+        "level": "info",
+        "message": "Created fine-tune: ft-bx7BVM2fNSBfMu7PXYDRSarN",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568792,
+        "level": "info",
+        "message": "Fine-tune costs $4.99",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568793,
+        "level": "info",
+        "message": "Fine-tune enqueued. Queue number: 0",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568796,
+        "level": "info",
+        "message": "Fine-tune started",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568946,
+        "level": "info",
+        "message": "Completed epoch 1/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569035,
+        "level": "info",
+        "message": "Completed epoch 2/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569123,
+        "level": "info",
+        "message": "Completed epoch 3/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569210,
+        "level": "info",
+        "message": "Completed epoch 4/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569299,
+        "level": "info",
+        "message": "Completed epoch 5/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569387,
+        "level": "info",
+        "message": "Completed epoch 6/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569475,
+        "level": "info",
+        "message": "Completed epoch 7/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569563,
+        "level": "info",
+        "message": "Completed epoch 8/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569650,
+        "level": "info",
+        "message": "Completed epoch 9/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569737,
+        "level": "info",
+        "message": "Completed epoch 10/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569825,
+        "level": "info",
+        "message": "Completed epoch 11/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569913,
+        "level": "info",
+        "message": "Completed epoch 12/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570001,
+        "level": "info",
+        "message": "Completed epoch 13/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570088,
+        "level": "info",
+        "message": "Completed epoch 14/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570175,
+        "level": "info",
+        "message": "Completed epoch 15/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570262,
+        "level": "info",
+        "message": "Completed epoch 16/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570278,
+        "level": "info",
+        "message": "Uploaded model: curie:ft-personal:market-risk-analyzer-2023-02-28-07-44-37",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570279,
+        "level": "info",
+        "message": "Uploaded result file: file-5nb9ty9sMl5wJL2MKZxJ4YR3",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570279,
+        "level": "info",
+        "message": "Fine-tune succeeded",
+        "object": "fine-tune-event"
+      }
+    ],
+    "fine_tuned_model": "curie:ft-personal:market-risk-analyzer-2023-02-28-07-44-37",
+    "hyperparams": {
+      "batch_size": 1,
+      "learning_rate_multiplier": 0.1,
+      "n_epochs": 16,
+      "prompt_loss_weight": 0.01
+    },
+    "id": "ft-bx7BVM2fNSBfMu7PXYDRSarN",
+    "model": "curie",
+    "object": "fine-tune",
+    "organization_id": "org-aAJNJIDCbG3gojns7msJhtSj",
+    "result_files": [
+      {
+        "bytes": 376632,
+        "created_at": 1677570279,
+        "filename": "compiled_results.csv",
+        "id": "file-5nb9ty9sMl5wJL2MKZxJ4YR3",
+        "object": "file",
+        "purpose": "fine-tune-results",
+        "status": "processed",
+        "status_details": null
+      }
+    ],
+    "status": "succeeded",
+    "training_files": [
+      {
+        "bytes": 390342,
+        "created_at": 1677568201,
+        "filename": "file",
+        "id": "file-uswEhysPPth2Pk8eBstcgjef",
+        "object": "file",
+        "purpose": "fine-tune",
+        "status": "processed",
+        "status_details": null
+      }
+    ],
+    "updated_at": 1677570279,
+    "validation_files": []
+  }
+  {
+    "data": [
+      {
+        "created_at": 1677568292,
+        "level": "info",
+        "message": "Created fine-tune: ft-bx7BVM2fNSBfMu7PXYDRSarN",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568792,
+        "level": "info",
+        "message": "Fine-tune costs $4.99",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568793,
+        "level": "info",
+        "message": "Fine-tune enqueued. Queue number: 0",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568796,
+        "level": "info",
+        "message": "Fine-tune started",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677568946,
+        "level": "info",
+        "message": "Completed epoch 1/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569035,
+        "level": "info",
+        "message": "Completed epoch 2/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569123,
+        "level": "info",
+        "message": "Completed epoch 3/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569210,
+        "level": "info",
+        "message": "Completed epoch 4/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569299,
+        "level": "info",
+        "message": "Completed epoch 5/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569387,
+        "level": "info",
+        "message": "Completed epoch 6/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569475,
+        "level": "info",
+        "message": "Completed epoch 7/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569563,
+        "level": "info",
+        "message": "Completed epoch 8/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569650,
+        "level": "info",
+        "message": "Completed epoch 9/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569737,
+        "level": "info",
+        "message": "Completed epoch 10/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569825,
+        "level": "info",
+        "message": "Completed epoch 11/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677569913,
+        "level": "info",
+        "message": "Completed epoch 12/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570001,
+        "level": "info",
+        "message": "Completed epoch 13/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570088,
+        "level": "info",
+        "message": "Completed epoch 14/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570175,
+        "level": "info",
+        "message": "Completed epoch 15/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570262,
+        "level": "info",
+        "message": "Completed epoch 16/16",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570278,
+        "level": "info",
+        "message": "Uploaded model: curie:ft-personal:market-risk-analyzer-2023-02-28-07-44-37",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570279,
+        "level": "info",
+        "message": "Uploaded result file: file-5nb9ty9sMl5wJL2MKZxJ4YR3",
+        "object": "fine-tune-event"
+      },
+      {
+        "created_at": 1677570279,
+        "level": "info",
+        "message": "Fine-tune succeeded",
+        "object": "fine-tune-event"
+      }
+    ],
+    "object": "list"
+  }

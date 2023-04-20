@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ dojo.name }} Dojo</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+        body {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: rgb(11, 83, 176);
+            margin: 1rem 0rem 0rem 2rem;
+        }
+        table.GeneratedTable {
+            /* width: 100%; */
+            /* background-color: #ffffff; */
+            border-collapse: collapse;
+            border-width: .1rem;
+            border-color: #86d5f2;
+            border-style: solid;
+            color: #000000;;
+            margin: 1rem 2rem 0rem 2rem;
+        }
+        table.GeneratedTable td, table.GeneratedTable th {
+            border-width: .1rem;
+            border-color: #86d5f2 ;
+            border-style: solid;
+            background-color: #9dece9;
+            width: 14rem;
+            height: 2rem;
+            text-align: left;
+            padding: 0rem 1rem 0rem 1rem;
+        }
+        table.GeneratedTable thead {
+            background-color: #86d5f2;
+            /* border-color: #02ffff;
+            border-radius: 10px; */
+            width: 14rem;
+            height: 2rem;
+            text-align: left;
+        }
+        a {
+            margin: 1rem 0rem 0rem 2rem;
+        }
+        </style>
+</head>
+<body>
+    <h1>{{ dojo.name }} Ninjas</h1>
+    <table class="GeneratedTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for one_ninja in dojo.ninjas %}
+            <tr>
+                <td>{{one_ninja.first_name}}</td>
+                <td>{{one_ninja.last_name}}</td>
+                <td>{{one_ninja.age}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/dojos">Home</a>
+</body>
+</html>

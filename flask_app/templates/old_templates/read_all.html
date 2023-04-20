@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        body {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+        }
+        table.GeneratedTable {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-color: #999c9c;
+            border-style: solid;
+            color: #000000;
+        }
+        
+        table.GeneratedTable td, table.GeneratedTable th {
+            border-width: 2px;
+            border-color: #999c9c;
+            border-style: solid;
+            padding: 3px;
+        }
+        
+        table.GeneratedTable thead {
+            background-color: #999c9c;
+        }
+        a {
+            margin: 1rem 0rem 0rem 0rem ;
+        }
+        </style>
+</head>
+<body>
+    <h1>See All Users</h1>
+    <table class="GeneratedTable">
+        <thead>
+            <tr>
+                <th>Id:</th>
+                <th>Full Name:</th>
+                <th>Email:</th>
+                <th>Created At:</th>
+                <th>Actions:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for one_friend in users %}
+            <tr>
+                <td>{{one_friend.id}}</td>
+                <td>{{one_friend.first_name}} {{one_friend.last_name}}</td>
+                <td>{{one_friend.email}}</td>
+                <td>{{one_friend.created_at}}</td>
+                <td><a href="/users/{{ one_friend.id }}">Show</a> | <a href="/users/{{ one_friend.id }}/edit">Edit</a> | <a href="/users/{{ one_friend.id }}/destroy/">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/users/new">Add a New User</a>
+</body>
+</html>
+    

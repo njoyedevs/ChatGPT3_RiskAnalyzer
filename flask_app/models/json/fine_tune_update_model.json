@@ -1,0 +1,38 @@
+{
+    "created_at": 1677794518,
+    "events": [
+        {
+            "created_at": 1677794518,
+            "level": "info",
+            "message": "Created fine-tune: ft-fpNmxIINcLOEoyyZ9DDVJMBn",
+            "object": "fine-tune-event"
+        }
+    ],
+    "fine_tuned_model": null,
+    "hyperparams": {
+        "batch_size": null,
+        "learning_rate_multiplier": 0.0025,
+        "n_epochs": 16,
+        "prompt_loss_weight": 0.01
+    },
+    "id": "ft-fpNmxIINcLOEoyyZ9DDVJMBn",
+    "model": "curie:ft-personal:market-risk-analyzer-2023-02-28-07-44-37",
+    "object": "fine-tune",
+    "organization_id": "org-aAJNJIDCbG3gojns7msJhtSj",
+    "result_files": [],
+    "status": "pending",
+    "training_files": [
+        {
+            "bytes": 825,
+            "created_at": 1677793913,
+            "filename": "file",
+            "id": "file-b0WIKY3gP7XJtV5gq2p3Cb5Z",
+            "object": "file",
+            "purpose": "fine-tune",
+            "status": "processed",
+            "status_details": null
+        }
+    ],
+    "updated_at": 1677794518,
+    "validation_files": []
+}
