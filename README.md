@@ -43,4 +43,4 @@
 
 ![Retrain Message](./RetrainMessage.jpg)
 
-### Next Steps include updating to ChatGPT4 Beta, deploying to AWS, and refining the documentation to aid other developers. In the mean time. Feel free to Connect a MySQL database, Install Requirements, and Run with "python server.py"
+### Next Steps include updating to ChatGPT4 Beta, deploying to AWS, and refining the documentation to aid other developers. In the mean time. Feel free to Connect a MySQL database to a development environment, clone repository, install Requirements, and Run with "python server.py"
