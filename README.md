@@ -1,23 +1,51 @@
 # ChatGPT3 Market Risk Analyzer
 
-### This project involves downloading, transforming, and filtering 9 datasets from the FRED API using Python, and analyzing their normal distribution with the Pandas library. An algorithm categorizes each data point based on historical normal distribution, and a ChatGPT3 model is fine-tuned using 40 years of CPI, PCE, and Inflation data.
+In this project, Python was utilized to develop a full-stack web application with ChatGPT3 for fine-tuning the AI model with 40 years of economic data. The application is designed to analyze the normal distribution of various datasets obtained from the FRED API.
 
-## Key user stories include:
-* Entering data points into the database to create prompts for ChatGPT3.
-* Viewing ChatGPT3 completions on a dashboard.
-* Exploring and navigating datasets in the project.
-* Assessing the market's risk level.
-* Evaluating the accuracy rate of ChatGPT3's completion response.
-* Retraining the model based on accuracy results.
+## About
 
-## Backend functionalities include:
-* ChatGPT3 Model: Saving responses, retraining, and creating .jsonl files.
-* Economic Data Model: Creating Plotly charts, fetching economic data, and retrieving the latest data and dates from FRED API.
-* Results Model: Saving and retrieving statistical analysis data, risk analysis, and creating Plotly gauge charts.
-* User Data Model: Saving and fetching the latest user data.
-* User Model: Saving and verifying users, validating names.
-* User Controller: Registration and login with Bcrypt and Regex, and clearing sessions.
-* User Data Controller: Creating and processing prompts, retraining the model, and managing the dashboard.
+ChatGPT3 Market Risk Analyzer is a full-stack application developed using Python, Flask, OpenAI, FredAP, Pandas, NumPy, jsonlines, CSV, Bcrypt, Plotly, PyMySQL, and RegEx. The application fine-tunes ChatGPT3 on 40 years of economic data using nine datasets found on the FRED API. A normal distribution algorithm was engineered to categorize each data point into eight percentile ranges. The ChatGPT3 Curie model was fine-tuned using both original economic data and normal distribution categorizations, achieving a 91% accuracy rate in predicting the monthly normal distribution category for novel data points across all nine datasets.
+
+## Technologies Used
+- Python
+- Flask
+- OpenAI's ChatGPT3
+- FredAP
+- Pandas
+- NumPy
+- jsonlines
+- CSV
+- Bcrypt
+- Plotly
+- PyMySQL
+- RegEx
+
+## Key Features
+- Fine-tuning of ChatGPT3 on economic data
+- Normal distribution algorithm for categorization of data points
+- Backend functionalities for saving and retrieving data, creating charts, fetching economic data, and more
+
+## Live Demo
+ChatGPT3 Market Risk Analyzer: https://github.com/njoyedevs/ChatGPT3_RiskAnalyzer
+
+## Source Code
+GitHub Repository: https://github.com/njoyedevs/ChatGPT3_RiskAnalyzer
+
+## Skills Highlight
+- Artificial Intelligence (AI)
+- Web Development
+- Programming
+- Software Development
+- Data Structures
+- SQL
+- Flask
+- ChatGPT3
+- Data Visualization
+- Statistical Data Analysis
+- Pandas (Software)
+- NumPy
+- Python (Programming Language)
+- Web Applications
 
 ## Tour of the Application 
 
