@@ -4,7 +4,7 @@ In this project, Python was utilized to develop a full-stack web application wit
 
 ## About
 
-ChatGPT3 Market Risk Analyzer is a full-stack application developed using Python, Flask, OpenAI, FredAP, Pandas, NumPy, jsonlines, CSV, Bcrypt, Plotly, PyMySQL, and RegEx. The application fine-tunes ChatGPT3 on 40 years of economic data using nine datasets found on the FRED API. A normal distribution algorithm was engineered to categorize each data point into eight percentile ranges. The ChatGPT3 Curie model was fine-tuned using both original economic data and normal distribution categorizations, achieving a 91% accuracy rate in predicting the monthly normal distribution category for novel data points across all nine datasets.
+ChatGPT3 Market Risk Analyzer is a full-stack application developed using Python, Flask, OpenAI, FredAP, Pandas, NumPy, jsonlines, CSV, Bcrypt, Plotly, PyMySQL, and RegEx. The application fine-tunes ChatGPT3 on 40 years of economic data using nine datasets found on the FRED API. A normal distribution algorithm was engineered to categorize each data point into eight percentile ranges. The ChatGPT3 Curie model was fine-tuned using both original economic data and normal distribution categorizations, achieving a high accuracy rate in predicting the monthly normal distribution category for novel data points across all nine datasets.
 
 ## Technologies Used
 - Python
