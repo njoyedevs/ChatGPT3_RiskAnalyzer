@@ -122,8 +122,9 @@ def get_data(api_key):
 
     # Convert the dictionary to a pandas DataFrame
     df = pd.DataFrame(data)
+    print(df)
 
-    # Reset the index to be the date
+    # # Reset the index to be the date
     df = df.reset_index()
 
     # Rename the columns to be more descriptive
@@ -145,8 +146,8 @@ def get_data(api_key):
     df = df.set_index('date')
     print(df)
 
-    # # Resample the data to be monthly and calculate the monthly percentage change
-    # df = df.resample('M').last().pct_change()
+    # Resample the data to be monthly and calculate the monthly percentage change
+    #df = df.resample('M').last().pct_change()
 
     # Drop the first row, which will have NaN values due to the percentage change calculation
     df = df.drop(df.index[0])
@@ -155,11 +156,13 @@ def get_data(api_key):
     # Display the resulting DataFrame
     # print(df.describe())
     # print(df.head())
-    df_filtered = df.dropna()
-    print(df_filtered)
     
-    # # df.to_excel("output.xlsx") 
-    df_filtered.to_csv('Final_Project/flask_app/models/data.csv') 
+    # Drop columns with missing data
+    df_filtered = df.dropna()
+    print(df_filtered) 
+    
+    # df.to_excel("output.xlsx") 
+    df_filtered.to_csv('Python_Wks_3-7/Final_Project/flask_app/models/data/data.csv') 
     
 # get_data(fred_api_key)
 
@@ -183,7 +186,7 @@ def get_last_date(api_key):
 
     # calculate the start and end dates
     end_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    start_date = (datetime.now() - timedelta(days=31)).strftime('%Y-%m-%d')
+    start_date = (datetime.now() - timedelta(days=91)).strftime('%Y-%m-%d')
     print(end_date)
     print(start_date)
 
@@ -237,43 +240,24 @@ def get_last_date(api_key):
 # Risk Analysis 
 def risk_analysis():
     
-    # Get data from FRED API
-    # get_data(fred_api_key)
-    
     # Import CSV from file folder.
-    old_data = pd.read_csv(r'data.csv')
-    recent_data = pd.read_csv(r'recent_data.csv')
-    # print(old_data)
-    # print(recent_data)
-    
-    combined_data = pd.concat([old_data, recent_data], axis=0)
-    combined_data = combined_data.reset_index()
-    combined_data = combined_data.drop(columns=['index'])
-    combined_data.to_csv('combined_data.csv')
-    # print(combined_data)
+    currentData = pd.read_csv('Python_Wks_3-7/Final_Project/flask_app/models/data/data.csv')
+    print(currentData)
     
     # Splice out the date column and other non necessary columns
-    df = combined_data.iloc[:,1:].copy()
+    dateColumn = currentData.iloc[:,:1].copy()
+    print(dateColumn)
+    
+    # Remaining data minus date column
+    df = currentData.iloc[:,1:].copy()
+    print(df)
 
     results_df = create_empty_df(df)
-    # print(results_df.shape)
-    # print(df.shape)
-    # print(range(len(df)))
-    # print(range(len(df.columns)))
+    print(results_df)
     
     percentiles = [0,.125,.25,.375,.5,.625,.75,.875,1]
-    # percentiles_text = ['0%','12.5%','25%','37.5%','50%','62.5%','75%','87.5%','100%']
     
     for column in range(len(df.columns)):
-        
-        # get one column
-        # print(df.iloc[:,column])
-        
-        # get percentiles for one column
-        # print(df.iloc[:,column].describe([0,.125,.25,.375,.5,.625,.75,.875,1])) 
-        
-        # get one value from one column
-        # print(df.iloc[:,column][0])
         
         # categorize each value in one column based on risk level bawed on normal curve percentiles
         for row in range(len(df.iloc[:,column])):
@@ -305,38 +289,17 @@ def risk_analysis():
                 print('Error')
     
     # Add a column of the sum of each row
-    # results_df['sum'] = results_df.sum(axis=1)
-    results_df['mean'] = np.round(results_df.mean(axis=1))
+    results_df['mean'] = np.round(results_df.mean(axis=1), 4)
 
     # Print the updated DataFrame
     print(results_df)
     
-    results_df.to_csv(f'recent_results.csv')
+    # Add back the dateColumn
+    results_df.insert(0,'date', dateColumn)
+    print(results_df)
     
-    return results_df
+    results_df.to_csv('Python_Wks_3-7/Final_Project/flask_app/models/data/recent_results.csv')
     
-    # Get all the values in a row all the way doesn the document
-    # for x in range(len(df)):
-    #     print(df.iloc[x])
-    #     for z in df.iloc[x]:
-    #         print(z)
-    
-    # Get all the values in a row all the way doesn the document
-    # for x in range(len(df)):
-        
-    #     # Get the row
-    #     # print(df.iloc[x])
-        
-    #     # Get the values in the row one by one
-    #     for y in range(len(df.iloc[x])):
-    #         print(df.iloc[x][y])
-    
-    # Get one column
-    # for x in range(len(df.columns)):
-    #     # print(df.iloc[:,x])
-    #     # Get every value in column one column at a time.
-    #     for y in range(len(df.iloc[:,x])):
-    #         print(df.iloc[:,x][y])
 # risk_analysis()
 
 # Save historical data into database
@@ -387,7 +350,7 @@ def save_econ_data():
 # Does not work- Getting this error and the file is present FileNotFoundError: [Errno 2] No such file or directory: 'recent_results.csv'
 def save_risk_data():
     
-    risk_data = pd.read_csv(r'Final_Project/flask_app/models/recent_results.csv')
+    risk_data = pd.read_csv('Python_Wks_3-7/Final_Project/flask_app/models/data/recent_results.csv')
     risk_data = risk_data.drop(['Unnamed: 0'], axis=1)
     print(risk_data)
     
@@ -396,22 +359,23 @@ def save_risk_data():
         # print(risk_data.iloc[x])
         
         # Convert the string to a datetime object
-        datetime_obj = datetime.strptime(risk_data['date'][x], '%m/%d/%Y')
+        # datetime_obj = datetime.strptime(risk_data['date'][x], '%m/%d/%Y')
+        datetime_obj = datetime.strptime(risk_data['date'][x], '%Y-%m-%d')
 
         # Format the datetime object as a string in the desired format
         formatted_date = datetime_obj.strftime('%Y-%m-%d')
 
         data = {
             'date': formatted_date,
-            'spcpi': risk_data['spcpi'][x],
-            'spcpi_m_s': risk_data['spcpi_m_s'][x],
-            'spcpi_m_fe': risk_data['spcpi_m_fe'][x],
-            'spcpi_m_fes': risk_data['spcpi_m_fes'][x],
-            'trim_mean_pce': risk_data['trim_mean_pce'][x],
-            'sixteenP_trim_mean_cpi': risk_data['sixteenP_trim_mean_cpi'][x],
-            'median_cpi': risk_data['median_cpi'][x],
-            'fpcpi': risk_data['fpcpi'][x],
-            'fpcpi_m_fe': risk_data['fpcpi_m_fe'][x],
+            'spcpi': risk_data['Sticky_Price_CPI'][x],
+            'spcpi_m_s': risk_data['Sticky_Price_CPI_Less_Shelter'][x],
+            'spcpi_m_fe': risk_data['Sticky_Price_CPI_Less_Food_Energy'][x],
+            'spcpi_m_fes': risk_data['Sticky_Price_CPI_Less_Food_Energy_Shelter'][x],
+            'trim_mean_pce': risk_data['Trimmed_Mean_PCE_Inflation_Rate'][x],
+            'sixteenP_trim_mean_cpi': risk_data['16_Percent_Trimmed_Mean_CPI'][x],
+            'median_cpi': risk_data['Median_CPI'][x],
+            'fpcpi': risk_data['Flexible_Price_CPI'][x],
+            'fpcpi_m_fe': risk_data['Flexible_Price_CPI_Less_Food_Energy'][x],
             'mean': risk_data['mean'][x],
             'user_id': 1,
             'user_data_id': 1,
@@ -689,7 +653,7 @@ def train_chatgpt():
     # For multiclass classification
     # classification/accuracy: accuracy
     # classification/weighted_f1_score: weighted F-1 score    
-train_chatgpt()
+# train_chatgpt()
 
 # FINAL VERSION
 def using_chatgpt_model():
