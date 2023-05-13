@@ -10,7 +10,6 @@
 * Evaluating the accuracy rate of ChatGPT3's completion response.
 * Retraining the model based on accuracy results.
 
-
 ## Backend functionalities include:
 * ChatGPT3 Model: Saving responses, retraining, and creating .jsonl files.
 * Economic Data Model: Creating Plotly charts, fetching economic data, and retrieving the latest data and dates from FRED API.
@@ -20,4 +19,28 @@
 * User Controller: Registration and login with Bcrypt and Regex, and clearing sessions.
 * User Data Controller: Creating and processing prompts, retraining the model, and managing the dashboard.
 
-### Next Steps include updating to ChatGPT4 Beta, deploying to AWS, and refining the documentation to aid other developers. In the mean time. Feel free to Connect a MySQL database, Install Requirements, and Run with "python server.py"
+## Tour of the Application 
+
+1. Secure Login & Registration Screen using Bcrypt
+
+![Login and Registration Screen](./LoginRegistration.jpg)
+
+<hr>
+
+2. Data Entry Screen Where User Can Enter Real or Mock Data Points
+
+![Data Entry Screen](./DataEntryScreen.jpg)
+
+<hr>
+
+3. Market Risk Report with Custom Guage and Design
+
+![Market Risk Report](./MarketRiskReport.jpg)
+
+<hr>
+
+4. ChatGPT3 Retrain Confirmation Message
+
+![Retrain Message](./RetrainMessage.jpg)
+
+### Next Steps include updating to ChatGPT4 Beta, deploying to AWS, and refining the documentation to aid other developers. In the mean time. Feel free to Connect a MySQL database to a development environment, clone repository, install Requirements, and Run with "python server.py"
