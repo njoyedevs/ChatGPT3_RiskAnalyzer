@@ -25,9 +25,6 @@ ChatGPT3 Market Risk Analyzer is a full-stack application developed using Python
 - Normal distribution algorithm for categorization of data points
 - Backend functionalities for saving and retrieving data, creating charts, fetching economic data, and more
 
-## Live Demo
-ChatGPT3 Market Risk Analyzer: https://github.com/njoyedevs/ChatGPT3_RiskAnalyzer
-
 ## Source Code
 GitHub Repository: https://github.com/njoyedevs/ChatGPT3_RiskAnalyzer
 
