@@ -1,6 +1,6 @@
 # ChatGPT3 Market Risk Analyzer
 
-In this project, Python was utilized to develop a full-stack web application with ChatGPT3 for fine-tuning the AI model with 40 years of economic data. The application is designed to analyze the normal distribution of various datasets obtained from the FRED API. To view, visit: http://www.aimarketrisk.com
+In this project, Python was utilized to develop a full-stack web application with ChatGPT3 for fine-tuning the AI model with 40 years of economic data. The application is designed to analyze the normal distribution of various datasets obtained from the FRED API.
 
 ## About
 
